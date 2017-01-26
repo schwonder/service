@@ -1,6 +1,6 @@
  <html>
   <pre>
-  <form method="get" action="files.php">
+  <form method="post" action="files.php">
   E-mail
   <input type="email" name="Email" required>
   Password

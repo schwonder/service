@@ -2,8 +2,10 @@
 $link=mysqli_connect("localhost", "root", "celmz321") or die ('error1' . mysql_error ());
 mysqli_select_db($link, "test") or die('error' . mysql_error());
 
-$Email=$_GET['Email'];
-$Password=$_GET['Password'];
+$Email=$_POST['Email'];
+$Email=mysqli_real_escape_string($link, $Email);
+$Password=$_POST['Password'];
+$Password=mysqli_real_escape_string($link, $Password);
 
 $strSQL = "SELECT * FROM users  WHERE email = '$Email'";
 $result=mysqli_query($link, $strSQL) or die('error2' .mysql_error());

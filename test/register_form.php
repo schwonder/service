@@ -1,6 +1,6 @@
  <html>
   <pre>
-  <form method="get" action="register">
+  <form method="post" action="register">
   E-mail
   <input type="email" name="Email" required>
   Password

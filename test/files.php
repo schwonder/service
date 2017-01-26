@@ -6,8 +6,13 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 
 
-	$Email=$_GET['Email'];
-    $Password=$_GET['Password'];
+	$Email=$_POST['Email'];
+	$Email=mysqli_real_escape_string($link, $Email);
+    $Password=$_POST['Password'];
+	$Password=mysqli_real_escape_string($link, $Password);
+	
+	
+
 	
 	$query = "SELECT * FROM users  WHERE email = '$Email' AND password = '$Password'";
 	
@@ -35,6 +40,8 @@ if (!$line) {
      move_uploaded_file($_FILES["filename"]["tmp_name"], "files/".$_FILES["filename"]["name"]);
 	 
 	 $File=$_FILES["filename"]["name"];
+	 
+	 $File=mysqli_real_escape_string($link, $File);
 	
 	 
 	 $strSQL = "INSERT INTO files (file, user_id) VALUES('$File', '$id')"; 
@@ -52,6 +59,8 @@ if (!$line) {
   File upload<br>
   <input type="file" name="filename" required><br>
   <input type="submit" value="upload">
+  <input type="hidden" name="Email" value="<?php echo $Email; ?>">
+  <input type="hidden" name="Password" value="<?php echo $Password; ?>">
   <br>
   </form>
   </html>
